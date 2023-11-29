@@ -99,11 +99,11 @@ for city in cities:
 
     def _process_weather(ti, **kwargs):
         info = ti.xcom_pull(task_ids=f'extract_data_{city}', key='return_value')
-        timestamp = info["current"]["dt"]
-        temp = info["current"]["temp"]
-        humidity = info["current"]["humidity"]
-        cloudiness = info["current"]["clouds"]
-        wind_speed = info["current"]["wind_speed"]
+        timestamp = info["data"]["dt"]
+        temp = info["data"]["temp"]
+        humidity = info["data"]["humidity"]
+        cloudiness = info["data"]["clouds"]
+        wind_speed = info["data"]["wind_speed"]
         return timestamp, temp, humidity, cloudiness, wind_speed
 
     process_data = PythonOperator(
